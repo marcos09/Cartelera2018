@@ -40,8 +40,8 @@ public class BillboardController {
 
 	// Alta de cartelera
 	@PutMapping(path = "/create", consumes = "application/json", produces = "application/json")
-	public void create(@RequestBody @Valid BillboardDTO cartelera) {
-		this.getCarteleraService().create(cartelera);
+	public void create(@RequestBody @Valid BillboardDTO billboard) {
+		this.getCarteleraService().create(billboard);
 	}
 
 	@PutMapping(path = "/update", consumes = "application/json", produces = "application/json")

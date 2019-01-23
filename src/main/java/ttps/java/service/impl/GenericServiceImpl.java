@@ -9,13 +9,13 @@ import ttps.java.dto.GenericDTO;
 import ttps.java.entity.GenericPersistentClass;
 import ttps.java.repository.GenericRepository;
 import ttps.java.service.GenericService;
-import ttps.java.transformer.Transformer;
+import ttps.java.transformer.TransformerImpl;
 
 
 public class GenericServiceImpl<T extends GenericRepository<entityType> , entityType extends GenericPersistentClass, dtoType extends GenericDTO> implements GenericService<dtoType> {
 	
 	@Autowired
-	private Transformer<entityType, dtoType> transformer;
+	private TransformerImpl<entityType, dtoType> transformer;
 	
 	@Autowired
 	private T repository;
@@ -29,11 +29,11 @@ public class GenericServiceImpl<T extends GenericRepository<entityType> , entity
 		this.repository = repository;
 	}
 
-	protected Transformer<entityType, dtoType> getTransformer() {
+	protected TransformerImpl<entityType, dtoType> getTransformer() {
 		return transformer;
 	}
 
-	protected void setTransformer(Transformer<entityType, dtoType> transformer) {
+	protected void setTransformer(TransformerImpl<entityType, dtoType> transformer) {
 		this.transformer = transformer;
 	}
 

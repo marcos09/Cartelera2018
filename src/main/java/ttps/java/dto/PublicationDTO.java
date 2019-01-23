@@ -1,5 +1,5 @@
 package ttps.java.dto;
 
-public class PublicationDTO implements GenericDTO {
+public class PublicationDTO extends GenericDTO {
 
 }

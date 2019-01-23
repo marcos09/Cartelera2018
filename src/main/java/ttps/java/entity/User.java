@@ -5,9 +5,6 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -18,11 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "app_user")
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+public class User extends GenericPersistentClass{
 
     @Column(name = "username")
     private String username;
@@ -41,6 +34,7 @@ public class User {
      * Roles are being eagerly loaded here because
      * they are a fairly small collection of items for this example.
      */
+    
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns
             = @JoinColumn(name = "user_id",
@@ -49,19 +43,12 @@ public class User {
                     referencedColumnName = "id"))
     private List<Role> roles;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
+    
     public String getUsername() {
         return username;
     }
 
-    public void setUsername(String username) {
+    private void setUsername(String username) {
         this.username = username;
     }
 
@@ -69,7 +56,7 @@ public class User {
         return password;
     }
 
-    public void setPassword(String password) {
+    private void setPassword(String password) {
         this.password = password;
     }
 
@@ -77,7 +64,7 @@ public class User {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    private void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
@@ -85,7 +72,7 @@ public class User {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    private void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
@@ -93,8 +80,29 @@ public class User {
         return roles;
     }
 
-    public void setRoles(List<Role> roles) {
+    private void setRoles(List<Role> roles) {
         this.roles = roles;
     }
+    
+    public void editFirstName(String firstname) {
+    	this.setFirstName(firstname);
+    }
+    
+    public void editLastName(String lastname) {
+    	this.setLastName(lastname);
+    }
+
+    public void editPassword(String password) {
+    	this.setPassword(password);
+    }
+
+    public void editUsername(String username) {
+    	this.setUsername(username);    
+    }
+
+    public void editRoles(List<Role> roles) {
+    	this.setRoles(roles); 
+    }
+
 }
 

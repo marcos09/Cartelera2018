@@ -1,9 +1,15 @@
 package ttps.java.dto;
 
-public class BillboardDTO implements GenericDTO{
+import java.util.List;
+
+public class BillboardDTO extends GenericDTO{
 
 	Long id;
 	String nameBillboard;
+	
+	List<UserDTO> writeUsers;
+	List<PublicationDTO> publications;
+	
 	public Long getId() {
 		return id;
 	}
