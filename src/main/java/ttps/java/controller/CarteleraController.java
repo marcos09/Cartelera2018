@@ -3,6 +3,7 @@ package ttps.java.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +12,7 @@ import ttps.java.dto.CarteleraDTO;
 import ttps.java.service.CarteleraService;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/cartelera")
 public class CarteleraController {
 	@Autowired

@@ -55,9 +55,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		        .and()
 		        .csrf()
 		        .disable();
-
 	}
 
+	/*
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.addFilterAfter(new CustomOauth2AuthenticationFilter(), BasicAuthenticationFilter.class)
+		.authorizeRequests().antMatchers("/h2-console/**").permitAll().and()
+			.authorizeRequests()
+				.antMatchers("/", "/home", "/h2-console").permitAll()
+				.anyRequest().fullyAuthenticated()
+				.and()
+	        .formLogin()
+	            .loginPage("/login")
+//	            .defaultSuccessUrl("http://localhost:4200")
+	            .permitAll()
+	            .and()
+	        .logout()
+	            .permitAll()
+	            .and()
+			.csrf().disable().cors().and()
+			.headers().frameOptions().disable();
+	}
+	*/
 	@Bean
 	public JwtAccessTokenConverter accessTokenConverter() {
 		JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
@@ -77,5 +97,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		defaultTokenServices.setTokenStore(tokenStore());
 		defaultTokenServices.setSupportRefreshToken(true);
 		return defaultTokenServices;
-	}
+	}	
+	
 }

@@ -1,23 +1,21 @@
 package ttps.java.controller;
 
-import ttps.java.entity.RandomCity;
-import ttps.java.entity.User;
-import ttps.java.service.GenericOriginalService;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import ttps.java.entity.RandomCity;
+import ttps.java.entity.User;
+import ttps.java.service.GenericOriginalService;
 
-/**
- * Created by nydiarra on 06/05/17.
- */
 @RestController
 @RequestMapping("/springjwt")
+@CrossOrigin
 public class ResourceController {
     @Autowired
     private GenericOriginalService userService;
