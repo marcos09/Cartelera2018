@@ -2,9 +2,6 @@ package ttps.java.entity;
 
 import javax.persistence.*;
 
-/**
- * Created by nydiarra on 10/05/17.
- */
 @Entity
 @Table(name = "random_city")
 public class RandomCity {

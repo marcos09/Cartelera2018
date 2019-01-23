@@ -5,22 +5,22 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import ttps.java.entity.Cartelera;
-import ttps.java.repository.CarteleraRepository;
+import ttps.java.entity.Billboard;
+import ttps.java.repository.BillboardRepository;
 
 @Component
 public class AppStartupRunner implements ApplicationRunner {
 @Autowired
-private CarteleraRepository personRepository;
+private BillboardRepository personRepository;
 
 @Override
 public void run(final ApplicationArguments args) throws Exception {
-	getPersonRepository().save(new Cartelera("Cartelera 1"));
+	getPersonRepository().save(new Billboard("Cartelera 1"));
 
-	getPersonRepository().save(new Cartelera("Cartelera 2"));
+	getPersonRepository().save(new Billboard("Cartelera 2"));
 
 }
-private CarteleraRepository getPersonRepository() {
+private BillboardRepository getPersonRepository() {
 return personRepository;
 }
 
