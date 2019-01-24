@@ -3,7 +3,7 @@ package ttps.java.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "random_city")
+@Table(name = "RandomCity")
 public class RandomCity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

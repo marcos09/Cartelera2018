@@ -1,11 +1,15 @@
 package ttps.java.transformer;
 
+import org.springframework.stereotype.Component;
+
 import ttps.java.dto.UserDTO;
 import ttps.java.entity.User;
+
+@Component
 public class UserTransformer extends TransformerImpl<User, UserDTO> {
 
 	public UserDTO toDTO(User e) {
-		return new UserDTO(e.getUsername(), e.getFirstName(), e.getLastName());
+		return new UserDTO(e.getId(), e.getUsername(), e.getFirstName(), e.getLastName());
 	}
 
 	public User toEntity(UserDTO dto) {

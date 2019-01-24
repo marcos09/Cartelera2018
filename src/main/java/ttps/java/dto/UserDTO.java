@@ -10,6 +10,14 @@ public class UserDTO extends GenericDTO{
 		super();
 	}
 	
+	public UserDTO(Long id, String username, String firstName, String lastName) {
+		super();
+		this.setFirstName(firstName);
+		this.setLastName(lastName);
+		this.setUsername(username);
+		this.setId(id);
+	}
+
 	public UserDTO(String username, String firstName, String lastName) {
 		super();
 		this.setFirstName(firstName);

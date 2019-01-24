@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="app_role")
+@Table(name="Role")
 public class Role extends GenericPersistentClass {
 
     @Column(name="role_name")

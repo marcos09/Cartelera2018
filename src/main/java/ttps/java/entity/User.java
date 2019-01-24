@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
-@Table(name = "app_user")
+@Table(name = "User")
 public class User extends GenericPersistentClass{
 
     @Column(name = "username")
@@ -103,6 +103,22 @@ public class User extends GenericPersistentClass{
     public void editRoles(List<Role> roles) {
     	this.setRoles(roles); 
     }
+
+    
+	public User() {
+		super();
+	}
+
+	public User(Long id, String username, String password, String firstName, String lastName) {
+		super();
+		this.setFirstName(firstName);
+		this.setLastName(lastName);
+		this.setPassword(password);
+		this.setUsername(username);
+		this.editId(id);
+	}
+    
+    
 
 }
 
