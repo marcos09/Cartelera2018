@@ -1,0 +1,24 @@
+<h2>
+  Home screen. Available for all authorized and not authorized users.
+</h2>
+
+<app-new-publication></app-new-publication>
+<hr/>
+<br><br>
+
+
+<h2>
+    Listado profesores
+  </h2>
+
+  <pre>{{profesors$| async | json}}</pre>
+
+<app-new-billboard></app-new-billboard>
+
+<h2>
+  Listado carteleras
+</h2>
+
+<pre>{{billboards$| async | json}}</pre>
+
+

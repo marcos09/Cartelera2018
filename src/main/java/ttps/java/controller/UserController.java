@@ -12,7 +12,7 @@ import ttps.java.dto.UserDTO;
 import ttps.java.service.GenericOriginalService;
 
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/users")
 @CrossOrigin
 
 public class UserController {
@@ -21,9 +21,7 @@ public class UserController {
     private GenericOriginalService userService;
 
     @RequestMapping(value ="/usersProfesor", method = RequestMethod.GET)
-   // @PreAuthorize("hasAuthority('ADMIN_USER')")
     public List<UserDTO> getProfesorUsers(){
-    	System.out.println("Entre en el controlador");
         return userService.findProfesorUsers();
     }
 

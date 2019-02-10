@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ttps.java.dto.BillboardDTO;
+import ttps.java.dto.PublicationDTO;
+import ttps.java.dto.UserDTO;
 import ttps.java.service.BillboardService;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/carteleras")
+@RequestMapping("/billboards")
 public class BillboardController {
 	@Autowired
 	private BillboardService carteleraService;
@@ -45,8 +47,8 @@ public class BillboardController {
 	}
 
 	@PutMapping(path = "/update", consumes = "application/json", produces = "application/json")
-	public void update(@RequestBody @Valid BillboardDTO cartelera) {
-		this.getCarteleraService().update(cartelera);
+	public void update(@RequestBody @Valid BillboardDTO billboard) {
+		this.getCarteleraService().update(billboard);
 	}
 
 	// Recupero un cartelera con el id
@@ -60,5 +62,29 @@ public class BillboardController {
 	public void delete(@PathVariable(value = "id") Long id) {
 		this.getCarteleraService().delete(id);
 	}
+	
+	
+	@PutMapping(path = "/{id}/addWriteUser", consumes = "application/json", produces = "application/json")
+	public void addWriteUser(@RequestBody  UserDTO userDTO, @PathVariable(value = "id") Long id) {
+		this.getCarteleraService().addWriteUser(userDTO, id);	
+	}
+
+	@PutMapping(path = "/{id}/removeWriteUser", consumes = "application/json", produces = "application/json")
+	public void removeWriteUser(@RequestBody  UserDTO userDTO, @PathVariable(value = "id") Long id) {
+		this.getCarteleraService().removeWriteUser(userDTO, id);
+	}
+
+	
+	@PutMapping(path = "/{id}/addPublication", consumes = "application/json", produces = "application/json")
+	public void addPublication(@RequestBody  PublicationDTO publicationDTO, @PathVariable(value = "id") Long id) {
+		this.getCarteleraService().addPublication(publicationDTO, id);
+	}
+
+	
+	@PutMapping(path = "/{id}/removePublication", consumes = "application/json", produces = "application/json")
+	public void removePublication(@RequestBody  PublicationDTO publicationDTO, @PathVariable(value = "id") Long id) {
+		this.getCarteleraService().removePublication(publicationDTO, id);
+	}
+
 
 }

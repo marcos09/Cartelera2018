@@ -1,0 +1,37 @@
+<h2>
+  Home screen. Available for all authorized and not authorized users.
+</h2>
+
+<app-new-publication></app-new-publication>
+<hr/>
+<br><br>
+
+<app-new-billboard></app-new-billboard>
+<h2>
+  Crear cartelera
+</h2>
+
+<form  [formGroup]="createBillboardForm" (ngSubmit)="onSubmit()">
+  <div>
+    <input formControlName="nameBillboard" placeholder="Nombre de la cartelera">
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-primary" type="submit">Crear cartelera</button>
+</div>
+
+</form>
+<h2>
+  Listado carteleras
+</h2>
+
+<pre>{{billboards$| async | json}}</pre>
+
+
+<h2>
+  Listado profesores
+</h2>
+
+<pre>{{profesors$| async | json}}</pre>
+
+

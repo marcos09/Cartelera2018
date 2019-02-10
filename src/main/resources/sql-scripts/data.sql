@@ -10,11 +10,15 @@ INSERT INTO Role (id, role_name, description) VALUES (4, 'PUBLICADOR_USER', 'Pro
 -- non-encrypted password: jwtpass
 INSERT INTO User (id, first_name, last_name, password, username) VALUES (1, 'John', 'Doe', '$2a$10$qtH0F1m488673KwgAfFXEOWxsoZSeHqqlB/8BTt3a6gsI5c2mdlfe', 'john.doe');
 INSERT INTO User (id, first_name, last_name, password, username) VALUES (2, 'Admin', 'Admin', '$2a$10$qtH0F1m488673KwgAfFXEOWxsoZSeHqqlB/8BTt3a6gsI5c2mdlfe', 'admin.admin');
+INSERT INTO User (id, first_name, last_name, password, username) VALUES (3, 'Laura', 'Fava', '$2a$10$qtH0F1m488673KwgAfFXEOWxsoZSeHqqlB/8BTt3a6gsI5c2mdlfe', 'lfava');
+INSERT INTO User (id, first_name, last_name, password, username) VALUES (4, 'Jorge', 'Rosso', '$2a$10$qtH0F1m488673KwgAfFXEOWxsoZSeHqqlB/8BTt3a6gsI5c2mdlfe', 'jrosso');
 
 
 INSERT INTO user_role(user_id, role_id) VALUES(1,1);
 INSERT INTO user_role(user_id, role_id) VALUES(2,1);
 INSERT INTO user_role(user_id, role_id) VALUES(2,2);
+INSERT INTO user_role(user_id, role_id) VALUES(3,3);
+INSERT INTO user_role(user_id, role_id) VALUES(4,3);
 
 -- Populate random city table
 

@@ -2,6 +2,7 @@ package ttps.java.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -113,8 +114,16 @@ public class Billboard extends GenericPersistentClass {
 		this.writeUsers = writeUsers;
 	}
 
+	public void removeWriteUserById(Long id) {
+		Predicate<User> userPredicate = u-> u.getId()  == id;
+		this.getWriteUsers().removeIf(userPredicate);
+	}
 
-	
+	public void removePublicationById(Long id) {
+		Predicate<Publication> predicate = p-> p.getId()  == id;
+		this.getPublications().removeIf(predicate);
+	}
+
 	
 	
 }

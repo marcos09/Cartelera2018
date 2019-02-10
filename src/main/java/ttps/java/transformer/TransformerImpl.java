@@ -3,7 +3,6 @@ package ttps.java.transformer;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 public abstract class TransformerImpl <Entity, DTO> implements Transformer<Entity, DTO> {
 
@@ -17,11 +16,11 @@ public abstract class TransformerImpl <Entity, DTO> implements Transformer<Entit
 
 	public Collection<DTO> toCollectionDTO(List<Entity> list) {
 		return (Collection<DTO>) this.toCollectionDTO(list);
-		
-	}
 
-	public List<Entity> toListEntity(Set<DTO> list) {
-		
+	}
+	
+	@Override
+	public List<Entity> toListEntity(List<DTO> list) {
 		List<Entity> entityList = new ArrayList<Entity>();
 		for(DTO u: list) {
 			entityList.add(this.toEntity(u));
@@ -29,9 +28,11 @@ public abstract class TransformerImpl <Entity, DTO> implements Transformer<Entit
 		return entityList;
 
 	}
-	
-	public Collection<Entity> toCollection(Set<DTO> list) {
+
+	@Override
+	public Collection<Entity> toCollection(List<DTO> list) {
 		return (Collection<Entity>) this.toListEntity(list);
 	}
+
 	
 }

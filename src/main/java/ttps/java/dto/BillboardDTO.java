@@ -1,5 +1,6 @@
 package ttps.java.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BillboardDTO extends GenericDTO{
@@ -10,6 +11,18 @@ public class BillboardDTO extends GenericDTO{
 	List<UserDTO> writeUsers;
 	List<PublicationDTO> publications;
 	
+	public List<UserDTO> getWriteUsers() {
+		return writeUsers;
+	}
+	public void setWriteUsers(List<UserDTO> writeUsers) {
+		this.writeUsers = writeUsers;
+	}
+	public List<PublicationDTO> getPublications() {
+		return publications;
+	}
+	public void setPublications(List<PublicationDTO> publications) {
+		this.publications = publications;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -27,10 +40,17 @@ public class BillboardDTO extends GenericDTO{
 		super();
 		this.id = id;
 		this.setNameBillboard(nameBillboard);
+		this.setPublications(new ArrayList<PublicationDTO>());
+		this.setWriteUsers(new ArrayList<UserDTO>());
+		
 	}
 	
 	public BillboardDTO() {
 		super();
+		this.setPublications(new ArrayList<PublicationDTO>());
+		this.setWriteUsers(new ArrayList<UserDTO>());
 	}
+	
+	
 	
 }

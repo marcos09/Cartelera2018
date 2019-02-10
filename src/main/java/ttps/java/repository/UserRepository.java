@@ -20,7 +20,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
     		+ "inner join Role  ON (USER_ROLE.ROLE_ID = Role.ID) WHERE ROLE_NAME = 'STANDARD_USER' "
     		, nativeQuery = true)
     */
-    @Query("SELECT u FROM User u INNER JOIN fetch u.roles  as r  WHERE r.roleName = 'STANDARD_USER'")
+    @Query("SELECT u FROM User u INNER JOIN fetch u.roles  as r  WHERE r.roleName = 'PROFESOR_USER'")
     List<User> findProfesorRole();
     
     

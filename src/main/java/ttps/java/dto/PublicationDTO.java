@@ -39,4 +39,8 @@ public class PublicationDTO extends GenericDTO {
 		this.setId(id);
 	}
 
+	public PublicationDTO() {
+		super();
+	}
+
 }

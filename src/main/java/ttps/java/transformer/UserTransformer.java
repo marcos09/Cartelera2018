@@ -1,15 +1,23 @@
 package ttps.java.transformer;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import ttps.java.dto.RoleDTO;
 import ttps.java.dto.UserDTO;
+import ttps.java.entity.Role;
 import ttps.java.entity.User;
 
 @Component
 public class UserTransformer extends TransformerImpl<User, UserDTO> {
 
+	@Autowired
+	private Transformer<Role, RoleDTO> roleTransformer;
+	
 	public UserDTO toDTO(User e) {
-		return new UserDTO(e.getId(), e.getUsername(), e.getFirstName(), e.getLastName());
+		UserDTO dto = new UserDTO(e.getId(), e.getUsername(), e.getFirstName(), e.getLastName());
+		dto.setRoles(this.roleTransformer.toListDTO(e.getRoles()));
+		return dto;
 	}
 
 	public User toEntity(UserDTO dto) {
@@ -17,10 +25,9 @@ public class UserTransformer extends TransformerImpl<User, UserDTO> {
 		u.editId(dto.getId());
 		u.editFirstName(dto.getFirstName());
 		u.editLastName(dto.getLastName());
-		//u.editRoles(roles);
+		u.editRoles(this.roleTransformer.toListEntity(dto.getRoles()));
 		u.editUsername(dto.getUsername());
 		return u;
 	}
-
 
 }
