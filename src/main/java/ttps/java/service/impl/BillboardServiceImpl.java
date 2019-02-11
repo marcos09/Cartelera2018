@@ -1,5 +1,6 @@
 package ttps.java.service.impl;
 
+import java.util.Collection;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,5 +74,31 @@ public class BillboardServiceImpl extends GenericServiceImpl<BillboardRepository
 		}
 	}
 
+	@Override
+	public Collection<PublicationDTO> publications(Long id) {
+		Optional<Billboard> optional = this.getRepository().findById(id);
+		if(optional.isPresent()) {
+			return this.getPublicationsTransform().toCollectionDTO(optional.get().getPublications());
+		}
+		
+		return null;
+	}
 
+	public UserRepository getUserRepository() {
+		return userRepository;
+	}
+
+	public void setUserRepository(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
+
+	public Transformer<Publication, PublicationDTO> getPublicationsTransform() {
+		return publicationsTransform;
+	}
+
+	public void setPublicationsTransform(Transformer<Publication, PublicationDTO> publicationsTransform) {
+		this.publicationsTransform = publicationsTransform;
+	}
+
+	
 }

@@ -15,7 +15,7 @@ public abstract class TransformerImpl <Entity, DTO> implements Transformer<Entit
 	}
 
 	public Collection<DTO> toCollectionDTO(List<Entity> list) {
-		return (Collection<DTO>) this.toCollectionDTO(list);
+		return (Collection<DTO>) this.toListDTO(list);
 
 	}
 	

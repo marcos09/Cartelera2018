@@ -26,12 +26,7 @@ public class BillboardController {
 	
 	@Autowired
 	private BillboardService carteleraService;
-	
-	@GetMapping(path ="/helloWorld")
-	public String hello() {
-		return "Hello world";
-	}
-	
+		
 	public BillboardService getCarteleraService() {
 		return carteleraService;
 	}
