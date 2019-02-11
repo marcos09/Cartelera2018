@@ -3,12 +3,11 @@ package ttps.java.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 
 import ttps.java.entity.User;
 
 
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserRepository extends GenericRepository<User> {
 	
     User findByUsername(String username);
     

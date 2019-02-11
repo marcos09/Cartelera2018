@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -22,7 +23,7 @@ public class Billboard extends GenericPersistentClass {
 	@OneToMany(cascade = CascadeType.ALL)
 	List<Publication> publications;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@ManyToMany
 	List<User> writeUsers;
 	
 	public List<Publication> getPublications() {

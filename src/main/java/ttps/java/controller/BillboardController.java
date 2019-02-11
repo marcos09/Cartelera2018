@@ -23,6 +23,7 @@ import ttps.java.service.BillboardService;
 @CrossOrigin
 @RequestMapping("/billboards")
 public class BillboardController {
+	
 	@Autowired
 	private BillboardService carteleraService;
 	
