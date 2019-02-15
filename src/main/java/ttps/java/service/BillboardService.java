@@ -16,6 +16,10 @@ public interface BillboardService extends GenericService<BillboardDTO> {
 	void removePublication(PublicationDTO dto, Long id);
 	
 	Collection<PublicationDTO> publications(Long id);
+
+	void subscribe(Long idBillboard);
+
+	void unsubscribe(Long id);
 }
 
 		 

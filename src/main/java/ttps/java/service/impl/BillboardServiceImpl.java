@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -98,6 +100,27 @@ public class BillboardServiceImpl extends GenericServiceImpl<BillboardRepository
 
 	public void setPublicationsTransform(Transformer<Publication, PublicationDTO> publicationsTransform) {
 		this.publicationsTransform = publicationsTransform;
+	}
+
+	@Override
+	public void subscribe(Long idBillboard) {
+		User u = this.getCurrentUser();
+		Optional<Billboard> opt = this.getRepository().findById(idBillboard);
+		if(opt.isPresent()) {
+			opt.get().subscribe(u);
+		}
+		
+	}
+	
+
+	@Override
+	public void unsubscribe(Long idBillboard) {
+		User u = this.getCurrentUser();
+		Optional<Billboard> opt = this.getRepository().findById(idBillboard);
+		if(opt.isPresent()) {
+			opt.get().unsuscribe(u.getId());
+		}
+		
 	}
 
 	

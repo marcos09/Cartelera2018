@@ -81,6 +81,16 @@ public class BillboardController {
 	public void removePublication(@RequestBody  PublicationDTO publicationDTO, @PathVariable(value = "id") Long id) {
 		this.getCarteleraService().removePublication(publicationDTO, id);
 	}
+	
+	
+	@PutMapping(path = "/{id}/subscribe", consumes = "application/json", produces = "application/json")
+	public void subscribe(@PathVariable(value = "id") Long id) {
+		this.getCarteleraService().subscribe(id);
+	}
 
+	@PutMapping(path = "/{id}/unsubscribe", consumes = "application/json", produces = "application/json")
+	public void unsubscribe(@PathVariable(value = "id") Long id) {
+		this.getCarteleraService().unsubscribe(id);
+	}
 
 }

@@ -6,6 +6,9 @@ import java.util.function.Predicate;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
@@ -14,18 +17,40 @@ public class Billboard extends GenericPersistentClass {
 		
 	public Billboard() {
 		super();
-		this.setPublications(new ArrayList<Publication>());
 		this.setWriteUsers(new ArrayList<User>());
+		
 	}
 
 	String nameBillboard;
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	List<Publication> publications;
+	List<Publication> publications = new ArrayList<Publication>();
 	
 	@ManyToMany
-	List<User> writeUsers;
+	List<User> writeUsers = new ArrayList<User>();
 	
+	
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "billboard_subscriptors", joinColumns
+            = @JoinColumn(name = "billboard_id",
+            referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id",
+                    referencedColumnName = "id"))
+	List<User> followers;
+
+	public void editFollowers(List<User> followers) {
+		this.setFollowers(followers);
+	}
+	
+	
+	public List<User> getFollowers() {
+		return followers;
+	}
+
+	private void setFollowers(List<User> followers) {
+		this.followers = followers;
+	}
+
 	public List<Publication> getPublications() {
 		return publications;
 	}
@@ -125,6 +150,17 @@ public class Billboard extends GenericPersistentClass {
 		this.getPublications().removeIf(predicate);
 	}
 
+	public void subscribe(User u) {
+		this.getFollowers().add(u);
+	}
+	
+	public void unsuscribe(Long idUser) {
+		
+		this.getFollowers().removeIf(obj -> obj.getId() == idUser);
+		
+	}
+
+	
 	
 	
 }

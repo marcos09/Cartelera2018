@@ -1,5 +1,7 @@
 package ttps.java.entity;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,14 +12,19 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
 @Table(name = "User")
-public class User extends GenericPersistentClass{
+public class User extends GenericPersistentClass implements UserDetails {
 
-    @Column(name = "username")
+	private static final long serialVersionUID = 1L;
+
+	@Column(nullable = false, unique = true)
     private String username;
 
     @Column(name = "password")
@@ -30,6 +37,8 @@ public class User extends GenericPersistentClass{
     @Column(name = "last_name")
     private String lastName;
 
+    @ManyToMany(mappedBy = "followers")
+    private List<Billboard> billboards = new ArrayList<Billboard>();
     
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns
@@ -113,8 +122,44 @@ public class User extends GenericPersistentClass{
 		this.setUsername(username);
 		this.editId(id);
 	}
-    
-    
 
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return this.getRoles();
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return false;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return false;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return false;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
+
+	public List<Billboard> getBillboards() {
+		return billboards;
+	}
+
+	private void setBillboards(List<Billboard> billboards) {
+		this.billboards = billboards;
+	}
+	
+	public void editBillboards(List<Billboard> billboards) {
+		this.setBillboards(billboards);
+	}
+    
+	
 }
 

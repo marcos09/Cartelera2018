@@ -36,7 +36,6 @@ public class ResourceController {
     @RequestMapping(value ="/usersProfesor", method = RequestMethod.GET)
    // @PreAuthorize("hasAuthority('ADMIN_USER')")
     public List<UserDTO> getProfesorUsers(){
-    	
         return userService.findProfesorUsers();
     }
 

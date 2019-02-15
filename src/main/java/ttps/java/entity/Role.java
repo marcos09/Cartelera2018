@@ -4,11 +4,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import org.springframework.security.core.GrantedAuthority;
+
 @Entity
 @Table(name="Role")
-public class Role extends GenericPersistentClass {
+public class Role extends GenericPersistentClass implements  GrantedAuthority {
 
-    @Column(name="role_name")
+	private static final long serialVersionUID = 1L;
+
+	@Column(name="role_name")
     private String roleName;
 
     @Column(name="description")
@@ -56,5 +60,10 @@ public class Role extends GenericPersistentClass {
     public void editDescription(String description) {
         this.editDescription(description); 
     }
+
+	@Override
+	public String getAuthority() {
+		return this.getRoleName();
+	}
 
 }
